@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+@theme {
+  --color-primary: #cdaa8b;
+  --color-secondary: #e5d9cf;
+  --color-secondary2: #a29489;
+  --color-intermedio: #77695e;
+  --color-oscuro: #4d3d2f;
+  --color-fondo-buttons: #000000;
+  --color-hovers-buttons: #282727;
+  --color-texto-resaltado: #ae5e17;
+  --color-background: #ffffff;
+}
+
+.font-beiruti {
+  font-family: var(--font-beiruti), sans-serif;
+}
