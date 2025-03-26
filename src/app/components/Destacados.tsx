@@ -60,6 +60,48 @@ const zapatillas = [
   },
 ];
 
+const ProductCard = ({ zapa }) => (
+  <div className="p-2 h-full">
+    <div className="bg-secondary shadow-lg rounded-lg overflow-hidden text-center h-full">
+      <img
+        src={zapa.img}
+        alt={zapa.name}
+        className="w-full h-56 object-cover"
+      />
+      <h3 className="text-texto-resaltado text-start text-xl font-beiruti ml-2 mt-2">
+        Destacado
+      </h3>
+      <h2 className="text-2xl text-start ml-2 mt-2">{zapa.name}</h2>
+      <h3 className="text-start ml-2 text-oscuro">{zapa.description}</h3>
+      <h1 className="text-3xl text-start ml-2 mt-2 mb-2">${zapa.price}</h1>
+    </div>
+  </div>
+);
+
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute right-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black z-10"
+      onClick={onClick}
+    >
+      <FaChevronRight size={30} />
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black z-10"
+      onClick={onClick}
+    >
+      <FaChevronLeft size={30} />
+    </div>
+  );
+}
+
 export default function Destacados() {
   const settings = {
     dots: true,
@@ -70,6 +112,31 @@ export default function Destacados() {
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -92,55 +159,9 @@ export default function Destacados() {
 
       <Slider {...settings} className="w-full mt-6 px-4">
         {zapatillas.map((zapa, index) => (
-          <div key={index} className="p-2">
-            <div className="bg-secondary shadow-lg rounded-lg overflow-hidden text-center">
-              <div>
-                <img
-                  src={zapa.img}
-                  alt={zapa.name}
-                  className="w-full h-56 object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-texto-resaltado text-start text-xl font-beiruti ml-2 mt-2">
-                  Lo nuevo
-                </h3>
-                <h2 className="text-2xl text-start ml-2 mt-2">{zapa.name}</h2>
-                <h3 className="text-start ml-2 text-oscuro">
-                  {zapa.description}
-                </h3>
-                <h1 className="text-3xl text-start ml-2 mt-2 mb-2">
-                  ${zapa.price}
-                </h1>
-              </div>
-            </div>
-          </div>
+          <ProductCard key={index} zapa={zapa} />
         ))}
       </Slider>
-    </div>
-  );
-}
-
-function NextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="absolute right-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black"
-      onClick={onClick}
-    >
-      <FaChevronRight size={30} />
-    </div>
-  );
-}
-
-function PrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black"
-      onClick={onClick}
-    >
-      <FaChevronLeft size={30} />
     </div>
   );
 }

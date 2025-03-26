@@ -1,0 +1,48 @@
+/* Estilos para el slider */
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-prev {
+  left: -35px;
+}
+
+.slick-next {
+  right: -35px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  display: none;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+  .slick-slide {
+    padding: 0 10px;
+  }
+
+  .slick-dots {
+    bottom: -25px;
+  }
+}
+
+/* Estilos para las tarjetas de producto */
+.bg-secondary {
+  background-color: #f8f9fa; /* Ajusta según tu tema */
+}
+
+.text-texto-resaltado {
+  color: #dc3545; /* Color para el texto "Destacado" */
+}
+
+.text-oscuro {
+  color: #343a40; /* Color para el texto normal */
+}

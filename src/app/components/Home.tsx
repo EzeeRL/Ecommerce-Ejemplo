@@ -26,6 +26,7 @@ export default function HomeLanding() {
             src="/slider-1.jpg"
             alt="Slide 1"
             className="w-full max-w-screen h-[70vh]"
+            draggable={false}
           />
         </div>
         <div>
@@ -33,6 +34,7 @@ export default function HomeLanding() {
             src="/slider-2.jpg"
             alt="Slide 2"
             className="w-full max-w-screen h-[70vh]"
+            draggable={false}
           />
         </div>
       </Slider>

@@ -1,0 +1,40 @@
+/* Estilos para el slider */
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-prev {
+  left: -35px;
+}
+
+.slick-next {
+  right: -35px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  display: none;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+  .slick-slide {
+    padding: 0 10px;
+  }
+
+  .slick-dots {
+    bottom: -25px;
+  }
+}
+
+/* Estilos para los filtros */
+.filter-panel {
+  transition: transform 0.3s ease-in-out;
+}
