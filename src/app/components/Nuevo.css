@@ -38,3 +38,11 @@
 .filter-panel {
   transition: transform 0.3s ease-in-out;
 }
+
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+}

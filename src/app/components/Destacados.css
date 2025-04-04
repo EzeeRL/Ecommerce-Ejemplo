@@ -46,3 +46,36 @@
 .text-oscuro {
   color: #343a40; /* Color para el texto normal */
 }
+
+/* Asegurar que las flechas estén sobre el slider */
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+/* Estilos para el panel de filtros */
+.filter-panel {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+  .slick-slide {
+    padding: 0 10px;
+  }
+
+  .slick-dots {
+    bottom: -25px;
+  }
+
+  /* Ajustar tamaño del panel de filtros en móvil */
+  .fixed {
+    width: 300px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-general-destacados {
+    height: 55vh;
+  }
+}

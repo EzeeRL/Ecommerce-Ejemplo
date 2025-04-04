@@ -84,20 +84,24 @@ const ProductCard = ({ zapa }) => (
 function NextArrow(props) {
   const { onClick } = props;
   return (
-    <FaChevronRight
-      className="absolute top-1/2 right-0 transform -translate-y-1/2 text-xl cursor-pointer z-10"
+    <div
+      className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 cursor-pointer text-black-900 bg-gray-300 p-2 rounded-4xl hover:text-black z-10 hidden md:block"
       onClick={onClick}
-    />
+    >
+      <FaChevronRight size={30} />
+    </div>
   );
 }
 
 function PrevArrow(props) {
   const { onClick } = props;
   return (
-    <FaChevronLeft
-      className="absolute top-1/2 left-0 transform -translate-y-1/2 text-xl cursor-pointer z-10"
+    <div
+      className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 cursor-pointer text-black-900 bg-gray-300 p-2 rounded-4xl hover:text-black z-10 hidden md:block"
       onClick={onClick}
-    />
+    >
+      <FaChevronLeft size={30} />
+    </div>
   );
 }
 
@@ -123,30 +127,30 @@ export default function Nuevo() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-        }
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false
-        }
-      }
-    ]
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center mt-[140px] w-full max-w-6xl mx-auto">
-      <div className="flex justify-between items-center w-full px-4">
+    <div className="relative flex flex-col justify-center items-center mt-[140px] mb-[20px] h-[88vh] w-full mx-auto overflow-x-hidden overflow-y-hidden">
+      <div className="flex justify-between items-center w-full px-4 max-w-full">
         <h1 className="text-4xl">Lo Nuevo</h1>
         <button
           onClick={toggleFilters}
@@ -163,14 +167,16 @@ export default function Nuevo() {
         </button>
       </div>
 
-      <Slider {...settings} className="w-full mt-6 px-4">
-        {zapatillas.map((zapa, index) => (
-          <ProductCard key={index} zapa={zapa} />
-        ))}
-      </Slider>
+      <div className="w-full max-w-full px-4 mt-6">
+        <Slider {...settings} className="w-full">
+          {zapatillas.map((zapa, index) => (
+            <ProductCard key={index} zapa={zapa} />
+          ))}
+        </Slider>
+      </div>
 
       <div
-        className={`fixed top-[170px] right-0 w-[400px] h-[350px] bg-secondary rounded-tl-xl rounded-bl-xl shadow-xl border border-black transition-transform duration-300 ${
+        className={`fixed top-[170px] z-50 right-0 w-[400px] h-[350px] bg-secondary rounded-tl-xl rounded-bl-xl shadow-xl border border-black transition-transform duration-300 ${
           showFilters ? "translate-x-0" : "translate-x-full"
         }`}
       >

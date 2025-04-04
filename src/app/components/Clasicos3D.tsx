@@ -12,6 +12,30 @@ const models = [
   { src: "./3D Models/retrorun.glb", name: "Retrorun" },
 ];
 
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute right-0 md:right-[-10px] top-1/2 transform -translate-y-1/2 cursor-pointer bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 z-10"
+      onClick={onClick}
+    >
+      <FaChevronRight size={24} className="text-white" />
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute left-0 md:left-[-10px] top-1/2 transform -translate-y-1/2 cursor-pointer bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 z-10"
+      onClick={onClick}
+    >
+      <FaChevronLeft size={24} className="text-white" />
+    </div>
+  );
+}
+
 export default function Clasicos3D() {
   const settings = {
     dots: true,
@@ -25,61 +49,39 @@ export default function Clasicos3D() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center my-8 w-full max-w-lg mx-auto">
-      <Slider {...settings} className="w-full flex justify-center items-center">
-        {models.map((model, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center justify-center"
-          >
-            <model-viewer
-              src={model.src}
-              ios-src="/modelo.usdz"
-              alt="Modelo 3D"
-              auto-rotate
-              shadow-intensity="1"
-              gesture="none"
-              camera-orbit="45deg 90deg"
-              camera-controls
-              interaction-prompt="none"
-              disable-zoom
-              style={{ width: "100%", height: "450px" }}
-            ></model-viewer>
-            <div className="flex justify-center items-center mb-4">
-              <button
-                className="text-4xl bg-secondary text-black p-4 rounded-4xl w-[180px] cursor-pointer transition-all 300 hover:scale-[1.05] hover:bg-secondary2"
-                style={{ boxShadow: "0px 5px 5px 2px rgba(0, 0, 0, 0.3)" }}
-              >
-                {model.name}
-              </button>
+    <div className="flex flex-col justify-center items-center my-8 w-full max-w-lg mx-auto overflow-y-hidden overflow-x-hidden px-4">
+      <div className="w-full max-w-full relative">
+        <Slider {...settings} className="w-full">
+          {models.map((model, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center w-full"
+            >
+              <model-viewer
+                src={model.src}
+                ios-src="/modelo.usdz"
+                alt="Modelo 3D"
+                auto-rotate
+                shadow-intensity="1"
+                gesture="none"
+                camera-orbit="45deg 90deg"
+                camera-controls
+                interaction-prompt="none"
+                disable-zoom
+                className="w-full h-[300px] md:h-[450px]"
+              ></model-viewer>
+              <div className="flex justify-center items-center mb-4 w-full mt-4">
+                <button
+                  className="text-2xl md:text-3xl bg-secondary text-black px-6 py-2 rounded-full cursor-pointer transition-all duration-300 hover:scale-[1.05] hover:bg-secondary2"
+                  style={{ boxShadow: "0px 5px 5px 2px rgba(0, 0, 0, 0.3)" }}
+                >
+                  {model.name}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
-  );
-}
-
-function NextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="absolute right-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black"
-      onClick={onClick}
-    >
-      <FaChevronRight size={30} />
-    </div>
-  );
-}
-
-function PrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black"
-      onClick={onClick}
-    >
-      <FaChevronLeft size={30} />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
